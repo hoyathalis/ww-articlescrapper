@@ -22,13 +22,13 @@ def scrape_and_parse(sub, page_num):
 def main():
     # src/config.py
     SUB_URL = [
-        {"url": "banking/?feed=banking-stories&page=", "pages": 127, "tag": "banking"},
-        {"url": "mortgages/?feed=mortgage-stories&page=", "pages": 77, "tag": "mortgages"},
-        #{"url": "investing/?page=", "pages": 50,"tag": "investing"},
-        #{"url": "credit-cards/?page=", "pages": 180,"tag": "credit-cards"},
-        #{"url": "loans/?page=", "pages": 32,"tag": "loans"},
-        {"url": "home-equity/?feed=home-equity-stories&page=", "pages": 11, "tag": "home-equity"},
-        {"url": "insurance/?feed=insurance-stories&page=", "pages": 108, "tag": "insurance"},
+        #{"url": "banking/?feed=banking-stories&page=", "pages": 127, "tag": "banking"},
+        #{"url": "mortgages/?feed=mortgage-stories&page=", "pages": 77, "tag": "mortgages"},
+        {"url": "investing/?page=", "pages": 50,"tag": "investing"},
+        {"url": "credit-cards/?page=", "pages": 180,"tag": "credit-cards"},
+        {"url": "loans/?page=", "pages": 32,"tag": "loans"},
+        #{"url": "home-equity/?feed=home-equity-stories&page=", "pages": 11, "tag": "home-equity"},
+        #{"url": "insurance/?feed=insurance-stories&page=", "pages": 108, "tag": "insurance"},
     ]
 
     HEADERS = {
