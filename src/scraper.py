@@ -11,6 +11,7 @@ class Scraper:
         try:
             response = requests.get(self.url)
             response.raise_for_status() 
+            print(self.url)
             return response.text
         except requests.exceptions.RequestException as e:
             log_message(f"Error during scraping: {e}")

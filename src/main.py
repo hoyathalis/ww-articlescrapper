@@ -14,14 +14,16 @@ def scrape_and_parse(sub, page_num):
     
     if "bankrate" in SCRAPE_BASE_URL:
         parsed_data = parser.bankrate_parse()
+        path = f"data/processed/{sub['tag']}.csv"
 
-    if "wsj" in SCRAPE_BASE_URL:
-        parsed_data = parser.wsj_parse()  
+    if "nerdwallet" in SCRAPE_BASE_URL:
+        parsed_data = parser.nerdwallet_parse()  
+        path = f"data/processed/nerdwallet.csv"
     
     if "experian" in SCRAPE_BASE_URL:
         parsed_data = parser.experian_parse()
+        path = f"data/processed/{sub['tag']}.csv"
 
-    path = f"data/processed/{sub['tag']}.csv"
     save_data(parsed_data, path)
     return f"Completed scraping and parsing for page {page_num} of {sub['tag']}"
 
@@ -35,17 +37,20 @@ def main():
         # {"base":"https://www.bankrate.com/", "url": "home-equity/?feed=home-equity-stories&page=", "pages": 11, "tag": "home-equity"},
         # {"base":"https://www.bankrate.com/", "url": "insurance/?feed=insurance-stories&page=", "pages": 108, "tag": "insurance"},
 
-        {"base":"https://www.experian.com/blogs/ask-experian/page/", "url": "", "pages": 318, "tag": "finance"},
+        {"base":"https://www.nerdwallet.com/h/news/financial-news?news=", "url": "", "pages": 3, "tag": "finance"},
+
+
+        #{"base":"https://www.experian.com/blogs/ask-experian/page/", "url": "", "pages": 318, "tag": "finance"},
        
     ]
 
-    HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     
     log_message("Starting the web scraping project...")
 
     for sub in SUB_URL:
         # Create a list of page numbers to scrape
-        pages = range(1, sub["pages"] + 1)
+        pages = range(3, sub["pages"] + 1)
         
         # Using ThreadPoolExecutor to scrape pages concurrently
         with ThreadPoolExecutor(max_workers=10) as executor:
